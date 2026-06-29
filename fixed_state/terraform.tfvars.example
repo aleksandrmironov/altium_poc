@@ -1,0 +1,18 @@
+# Copy to terraform.tfvars and fill in before applying.
+# scripts/import_fixed.sh auto-populates vpc_id, subnet_ids, SG descriptions, acm_certificate_arn.
+
+vpc_id     = ""           # auto-populated by import_fixed.sh
+subnet_ids = ["", "", ""] # auto-populated by import_fixed.sh [public, app, data]
+
+alb_sg_description   = "" # auto-populated by import_fixed.sh
+app_sg_description   = "" # auto-populated by import_fixed.sh
+mysql_sg_description = "" # auto-populated by import_fixed.sh
+acm_certificate_arn  = "" # auto-populated by import_fixed.sh
+
+# app_egress_cidrs: destination CIDRs for app EC2 outbound (port 443 only).
+# IP-based proxy for FQDN control in MiniStack. Network Firewall enforces
+# FQDN restriction on real AWS. Defaults set in variables.tf.
+# app_egress_cidrs = [
+#   "93.184.216.34/32", # example.com   — illustrative, may drift
+#   "203.0.113.10/32",  # secureweb.com — RFC 5737 TEST-NET placeholder
+# ]
